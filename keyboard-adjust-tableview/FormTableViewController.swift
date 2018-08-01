@@ -10,6 +10,15 @@ import UIKit
 
 class FormTableViewController: UITableViewController {
 
+    @IBOutlet weak var name: UITextField!
+    @IBOutlet weak var address: UITextField!
+    @IBOutlet weak var phone: UITextField!
+    @IBOutlet weak var sex: UITextField!
+    @IBOutlet weak var age: UITextField!
+    @IBOutlet weak var height: UITextField!
+    
+    var completionHandler: ((_ name: String, _ address: String, _ phone: String, _ sex: String, _ age: String, _ height: String) -> ())?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,16 +34,20 @@ class FormTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func doneAction(_ sender: UIButton) {
+        if let completionHandler = completionHandler {
+            completionHandler(name.text!, address.text!, phone.text!, sex.text!, age.text!, height.text!)
+        }
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 7
     }
 
     /*
